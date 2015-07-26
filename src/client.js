@@ -1,3 +1,15 @@
-/**
- * Created by julienrodrigues on 2015-07-20.
- */
+'use strict';
+
+import del from 'del';
+
+let lolilol = target => {
+  target.plpl = 'okok';
+  return target;
+};
+
+@lolilol
+class okok {
+  constructor() {
+    this.ok = 'lolol';
+  }
+}

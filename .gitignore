@@ -1,1 +1,18 @@
-# Created by .ignore support plugin (hsz.mobi)
+### Project
+dist/
+.stage/
+
+### Node
+node_modules/
+*.log
+
+### Sass
+.sass-cache
+*.css.map
+
+### IDE
+.idea/
+
+### OSX
+.DS_Store
+
