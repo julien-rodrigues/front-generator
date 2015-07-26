@@ -1,0 +1,22 @@
+{
+  "name": "front-generator",
+  "version": "1.0.0",
+  "description": "Personal front-end architecture generator including React, Typescript, Flux, Eslint, Sass, ...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julien-rodrigues/front-generator.git"
+  },
+  "keywords": [
+    "yeoman"
+  ],
+  "author": "Julien Rodrigues <contact@jrodrigues.me> (http://jrodrigues.me/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julien-rodrigues/front-generator/issues"
+  },
+  "homepage": "https://github.com/julien-rodrigues/front-generator#readme"
+}
