@@ -20,9 +20,7 @@ const STYLES_ENTRY_POINT = 'client.scss';
 let bundle = browserify({
   entries: [SOURCE_DIR + '/' + SCRIPTS_ENTRY_POINT],
   debug: true
-}).transform(babelify.configure({
-  stage: 0
-}));
+});
 
 /**
  * Clean task
