@@ -1,5 +1,3 @@
-'use strict';
-
 import config from './config';
 import del from 'del';
 import gulp from 'gulp';
@@ -18,9 +16,9 @@ gulp.task('clean:build', cb => del([
  */
 gulp.task('clean:dev-stage', ['scripts:dev', 'styles:dev'], cb => {
   return del([
-    config.paths.stage + '/**/*.scss',
-    config.paths.stage + '/**/*.js',
-    '!' + config.paths.stage + '/' + config.scripts.entryPoint
+    `${config.paths.stage}/**/*.scss`,
+    `${config.paths.stage}/**/*.js`,
+    `!${config.paths.stage}/${config.scripts.entryPoint}`
   ], cb);
 });
 

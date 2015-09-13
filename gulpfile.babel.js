@@ -1,9 +1,7 @@
-'use strict';
-
 import config from './tasks/config';
 import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
 import wrench from 'wrench';
+
 
 /**
  * Import tasks.

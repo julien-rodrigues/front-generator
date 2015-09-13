@@ -1,5 +1,3 @@
-'use strict';
-
 import {assign} from 'lodash';
 import {argv} from 'yargs';
 import babelify from 'babelify';
@@ -14,7 +12,7 @@ import watchify from 'watchify';
 const $ = gulpLoadPlugins();
 
 let browserifyOpts = {
-  entries: [config.paths.source + '/' + config.scripts.entryPoint],
+  entries: [`${config.paths.source}/${config.scripts.entryPoint}`],
   debug: true
 };
 
@@ -22,6 +20,7 @@ let browserifyBundle = browserify(browserifyOpts)
   .transform(babelify);
 
 let watchifyOpts = assign({}, watchify.args, browserifyOpts);
+
 let watchBundle = watchify(browserify(watchifyOpts))
   .transform(babelify)
   .on('update', () => {
@@ -33,6 +32,8 @@ let watchBundle = watchify(browserify(watchifyOpts))
 /**
  * Bundle all scripts.
  * @method scriptsBundle
+ * @param {object} bundleType - Browserify builder.
+ * @param {string} destination - Bundle destination.
  * @return {object} The stream.
  */
 let scriptsBundle = (bundleType, destination) => {
@@ -50,6 +51,8 @@ let scriptsBundle = (bundleType, destination) => {
  * Scripts, development task.
  */
 gulp.task('scripts:dev', ['copy:stage'], () => {
-  let bundle = (argv.watch ? watchBundle : browserifyBundle);
-  return scriptsBundle(bundle, config.paths.stage);
+  return scriptsBundle(
+    (argv.watch ? watchBundle : browserifyBundle),
+    config.paths.stage
+  );
 });

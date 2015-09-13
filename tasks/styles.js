@@ -1,5 +1,3 @@
-'use strict';
-
 import {argv} from 'yargs';
 import config from './config';
 import gulp from 'gulp';
@@ -11,10 +9,12 @@ const $ = gulpLoadPlugins();
 /**
  * Bundle all styles.
  * @method stylesBundle
+ * @param {object} source - Source folder.
+ * @param {string} destination - Compiled destination.
  * @return {object} The stream.
  */
 let stylesBundle = (source, destination) => {
-  return gulp.src(source + '/' + config.styles.entryPoint)
+  return gulp.src(`${source}/${config.styles.entryPoint}`)
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe(
@@ -39,7 +39,7 @@ let stylesBundle = (source, destination) => {
  */
 gulp.task('styles:dev', ['copy:stage'], () => {
   if (argv.watch) {
-    gulp.watch(config.paths.source + '/**/*.scss', () => {
+    gulp.watch(`${config.paths.source}/**/*.scss`, () => {
       return stylesBundle(config.paths.source, config.paths.dist);
     });
   }

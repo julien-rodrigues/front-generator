@@ -12,4 +12,4 @@ export default {
   scripts: {
     entryPoint: 'main.js'
   }
-}
+};
