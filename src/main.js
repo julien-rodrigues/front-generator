@@ -1,19 +1,21 @@
-'use strict';
+let x: number = 0;
 
-import del from 'del';
-
-let lolilol = target => {
-  target.plpl = 'qqqqq';
+let LolilolOk = target => {
+  target.plpl = x;
   return target;
 };
 
-@lolilol
+@LolilolOk
 class okok {
   constructor() {
     this.ok = 'lol nn<<<nn l';
   }
 
-  render() {
-    return <div id="idzfj">kokok</div>;
+  black(): string {
+    return 0;
+  }
+
+  render(): string {
+    return <div id="aaa">qqqadiaj asd</div>;
   }
 }
