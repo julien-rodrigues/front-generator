@@ -19,7 +19,7 @@ let stylesBundle = (source, destination) => {
     .pipe($.if(!argv.prod, $.sourcemaps.init()))
     .pipe(
       $.sass.sync({
-        outputStyle: (argv.prod ? 'comp' : 'expanded'),
+        outputStyle: (argv.prod ? 'compressed' : 'expanded'),
         precision: 10,
         includePaths: ['.']
       }).on('error', $.util.log)
