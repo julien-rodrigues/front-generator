@@ -13,7 +13,7 @@ const $ = gulpLoadPlugins();
 
 let browserifyOpts = {
   entries: [`${config.paths.source}/${config.scripts.entryPoint}`],
-  debug: true
+  debug: !argv.prod
 };
 
 let browserifyBundle = browserify(browserifyOpts)
@@ -41,8 +41,10 @@ let scriptsBundle = (bundleType, destination) => {
     .bundle()
     .pipe(source(config.scripts.entryPoint))
     .pipe(buffer())
+    .pipe($.if(argv.prod, $.uglify()))
     .pipe(gulp.dest(destination))
-    .pipe($.size({title: 'Development scripts size'}))
+    .pipe($.if(!argv.prod, $.size({title: 'Development scripts size'})))
+    .pipe($.if(argv.prod, $.size({title: 'Production scripts size'})))
     .on('error', $.util.log);
 };
 
@@ -55,4 +57,12 @@ gulp.task('scripts:dev', ['copy:stage'], () => {
     (argv.watch ? watchBundle : browserifyBundle),
     config.paths.stage
   );
+});
+
+
+/**
+ * Scripts, production task.
+ */
+gulp.task('scripts:prod', ['copy:stage'], () => {
+  return scriptsBundle(browserifyBundle, config.paths.stage);
 });

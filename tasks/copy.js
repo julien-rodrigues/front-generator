@@ -1,3 +1,4 @@
+import {argv} from 'yargs';
 import config from './config';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
@@ -17,11 +18,12 @@ gulp.task('copy:stage', ['clean:build'], () => {
 
 
 /**
- * Copy to dist, development task.
+ * Copy to dist task.
  */
-gulp.task('copy:dev', ['clean:dev-stage'], () => {
+gulp.task('copy:build', ['clean:stage'], () => {
   return gulp.src(`${config.paths.stage}/**/*.*`)
     .pipe(gulp.dest(config.paths.dist))
-    .pipe($.size({title: 'Development build size'}))
+    .pipe($.if(!argv.prod, $.size({title: 'Development build size'})))
+    .pipe($.if(argv.prod, $.size({title: 'Production build size'})))
     .on('error', $.util.log);
 });

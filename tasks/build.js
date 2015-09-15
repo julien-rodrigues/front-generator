@@ -1,12 +1,25 @@
+import {argv} from 'yargs';
 import gulp from 'gulp';
 
 
-/**
- * Build, development task.
- */
-gulp.task('build:dev', [
-  'clean:build', 'copy:stage', 'styles:dev',
-  'scripts:dev', 'clean:dev-stage', 'copy:dev'
-], () => {
-  gulp.start('clean:stage');
-});
+if (argv.prod) {
+  /**
+   * Build, production task.
+   */
+  gulp.task('build', [
+    'clean:pre-build', 'copy:stage', 'styles:prod',
+    'scripts:prod', 'clean:stage', 'copy:build'
+  ], () => {
+    gulp.start('clean:build');
+  });
+} else {
+  /**
+   * Build, development task.
+   */
+  gulp.task('build', [
+    'clean:pre-build', 'copy:stage', 'styles:dev',
+    'scripts:dev', 'clean:stage', 'copy:build'
+  ], () => {
+    gulp.start('clean:build');
+  });
+}

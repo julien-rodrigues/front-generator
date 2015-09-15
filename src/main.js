@@ -8,7 +8,7 @@ let LolilolOk = target => {
 @LolilolOk
 class okok {
   constructor() {
-    this.ok = 'lol nn<<<nn l';
+    this.ok = 'AAAAAAAA';
   }
 
   black(): string {
