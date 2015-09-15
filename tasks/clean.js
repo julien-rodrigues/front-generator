@@ -1,15 +1,6 @@
-import {argv} from 'yargs';
 import config from './config';
 import del from 'del';
 import gulp from 'gulp';
-
-let cleanStageDeps = null;
-
-if (argv.prod) {
-  cleanStageDeps = ['scripts:prod', 'styles:prod'];
-} else {
-  cleanStageDeps = ['scripts:dev', 'styles:dev'];
-}
 
 
 /**
@@ -23,7 +14,7 @@ gulp.task('clean:pre-build', cb => del([
 /**
  * Clean stage task.
  */
-gulp.task('clean:stage', cleanStageDeps, cb => {
+gulp.task('clean:stage', ['scripts', 'styles'], cb => {
   return del([
     `${config.paths.stage}/**/*.scss`,
     `${config.paths.stage}/**/*.js`,

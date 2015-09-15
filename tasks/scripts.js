@@ -50,19 +50,11 @@ let scriptsBundle = (bundleType, destination) => {
 
 
 /**
- * Scripts, development task.
+ * Scripts task.
  */
-gulp.task('scripts:dev', ['copy:stage'], () => {
+gulp.task('scripts', ['copy:stage'], () => {
   return scriptsBundle(
-    (argv.watch ? watchBundle : browserifyBundle),
+    (!argv.prod && argv.watch ? watchBundle : browserifyBundle),
     config.paths.stage
   );
-});
-
-
-/**
- * Scripts, production task.
- */
-gulp.task('scripts:prod', ['copy:stage'], () => {
-  return scriptsBundle(browserifyBundle, config.paths.stage);
 });

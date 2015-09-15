@@ -36,21 +36,13 @@ let stylesBundle = (source, destination) => {
 
 
 /**
- * Styles, development task.
+ * Styles task.
  */
-gulp.task('styles:dev', ['copy:stage'], () => {
-  if (argv.watch) {
+gulp.task('styles', ['copy:stage'], () => {
+  if (!argv.prod && argv.watch) {
     gulp.watch(`${config.paths.source}/**/*.scss`, () => {
       return stylesBundle(config.paths.source, config.paths.dist);
     });
   }
-  return stylesBundle(config.paths.stage, config.paths.stage);
-});
-
-
-/**
- * Styles, production task.
- */
-gulp.task('styles:prod', ['copy:stage'], () => {
   return stylesBundle(config.paths.stage, config.paths.stage);
 });

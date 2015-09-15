@@ -16,4 +16,4 @@ wrench.readdirSyncRecursive(config.paths.tasks).filter(
 /**
  * Set default task.
  */
-gulp.task('default', ['build:dev']);
+gulp.task('default', ['build']);
