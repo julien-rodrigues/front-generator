@@ -1,5 +1,5 @@
 # front-generator
-My currently in work personal front-end architecture generator (React, Flux, ES2015/16, Eslint, SASS, ...)
+My currently in work personal front-end architecture generator (React, Flux, ES2015/16, Eslint, SASS, ...). Use it to build an independent front-end architecture.
 
 
 # Current Gulp tasks
