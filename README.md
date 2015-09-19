@@ -6,6 +6,7 @@ My currently in work personal front-end architecture generator (React, Flux, ES2
 - build
 - build --watch
 - build --prod
+
 For development build just launch `gulp build` as development is the default mode.
 This is just a security.
 
