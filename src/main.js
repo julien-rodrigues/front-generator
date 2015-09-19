@@ -1,4 +1,4 @@
-let x: number = 0;
+let x = 0;
 
 let LolilolOk = target => {
   target.plpl = x;
@@ -6,16 +6,16 @@ let LolilolOk = target => {
 };
 
 @LolilolOk
-class okok {
+export default class okok {
   constructor() {
     this.ok = 'AAAAAAAA';
   }
 
-  black(): string {
+  black() {
     return 0;
   }
 
-  render(): string {
+  render() {
     return <div id="mmmmmmm">qqqadiaj asd</div>;
   }
 }

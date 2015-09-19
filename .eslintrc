@@ -142,7 +142,7 @@
     "prefer-spread": 2,
     "prefer-template": 2,
     "quote-props": [2, "as-needed"],
-    "quotes": [2, "single"],
+    "quotes": [2, "single", "avoid-escape"],
     "radix": 2,
     "require-jsdoc": 2,
     "require-yield": 2,

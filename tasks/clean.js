@@ -6,7 +6,7 @@ import gulp from 'gulp';
 /**
  * Clean build task.
  */
-gulp.task('clean:pre-build', cb => del([
+gulp.task('clean:pre-build', ['eslint'], cb => del([
   config.paths.dist, config.paths.stage
 ], cb));
 

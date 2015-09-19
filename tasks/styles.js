@@ -1,4 +1,3 @@
-import {argv} from 'yargs';
 import config from './config';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
@@ -15,11 +14,11 @@ const $ = gulpLoadPlugins();
  */
 let stylesBundle = (source, destination) => {
   return gulp.src(`${source}/${config.styles.entryPoint}`)
-    .pipe($.if(!argv.prod, $.plumber()))
-    .pipe($.if(!argv.prod, $.sourcemaps.init()))
+    .pipe($.if(!$.util.env.prod, $.plumber()))
+    .pipe($.if(!$.util.env.prod, $.sourcemaps.init()))
     .pipe(
       $.sass.sync({
-        outputStyle: (argv.prod ? 'compressed' : 'expanded'),
+        outputStyle: ($.util.env.prod ? 'compressed' : 'expanded'),
         precision: 10,
         includePaths: ['.']
       }).on('error', $.util.log)
@@ -27,10 +26,10 @@ let stylesBundle = (source, destination) => {
     .pipe($.autoprefixer({
       browsers: [config.styles.autoprefixer]
     }))
-    .pipe($.if(!argv.prod, $.sourcemaps.write()))
+    .pipe($.if(!$.util.env.prod, $.sourcemaps.write()))
     .pipe(gulp.dest(destination))
-    .pipe($.if(!argv.prod, $.size({title: 'Development styles size'})))
-    .pipe($.if(argv.prod, $.size({title: 'Production styles size'})))
+    .pipe($.if(!$.util.env.prod, $.size({title: 'Development styles size'})))
+    .pipe($.if($.util.env.prod, $.size({title: 'Production styles size'})))
     .on('error', $.util.log);
 };
 
@@ -39,7 +38,7 @@ let stylesBundle = (source, destination) => {
  * Styles task.
  */
 gulp.task('styles', ['copy:stage'], () => {
-  if (!argv.prod && argv.watch) {
+  if (!$.util.env.prod && $.util.env.watch) {
     gulp.watch(`${config.paths.source}/**/*.scss`, () => {
       return stylesBundle(config.paths.source, config.paths.dist);
     });

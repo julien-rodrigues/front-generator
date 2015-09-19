@@ -1,5 +1,4 @@
 import config from './tasks/config';
-import gulp from 'gulp';
 import wrench from 'wrench';
 
 
@@ -11,9 +10,3 @@ wrench.readdirSyncRecursive(config.paths.tasks).filter(
 ).map(
   file => require(config.paths.tasks + file)
 );
-
-
-/**
- * Set default task.
- */
-gulp.task('default', ['build']);

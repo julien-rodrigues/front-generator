@@ -1,5 +1,4 @@
 import {assign} from 'lodash';
-import {argv} from 'yargs';
 import babelify from 'babelify';
 import browserify from 'browserify';
 import buffer from 'vinyl-buffer';
@@ -13,7 +12,7 @@ const $ = gulpLoadPlugins();
 
 let browserifyOpts = {
   entries: [`${config.paths.source}/${config.scripts.entryPoint}`],
-  debug: !argv.prod
+  debug: !$.util.env.prod
 };
 
 let browserifyBundle = browserify(browserifyOpts)
@@ -24,7 +23,9 @@ let watchifyOpts = assign({}, watchify.args, browserifyOpts);
 let watchBundle = watchify(browserify(watchifyOpts))
   .transform(babelify)
   .on('update', () => {
-    scriptsBundle(watchBundle, config.paths.dist);
+    gulp.start('eslint', () => {
+      scriptsBundle(watchBundle, config.paths.dist);
+    });
   })
   .on('log', $.util.log);
 
@@ -41,10 +42,10 @@ let scriptsBundle = (bundleType, destination) => {
     .bundle()
     .pipe(source(config.scripts.entryPoint))
     .pipe(buffer())
-    .pipe($.if(argv.prod, $.uglify()))
+    .pipe($.if($.util.env.prod, $.uglify()))
     .pipe(gulp.dest(destination))
-    .pipe($.if(!argv.prod, $.size({title: 'Development scripts size'})))
-    .pipe($.if(argv.prod, $.size({title: 'Production scripts size'})))
+    .pipe($.if(!$.util.env.prod, $.size({title: 'Development scripts size'})))
+    .pipe($.if($.util.env.prod, $.size({title: 'Production scripts size'})))
     .on('error', $.util.log);
 };
 
@@ -54,7 +55,7 @@ let scriptsBundle = (bundleType, destination) => {
  */
 gulp.task('scripts', ['copy:stage'], () => {
   return scriptsBundle(
-    (!argv.prod && argv.watch ? watchBundle : browserifyBundle),
+    (!$.util.env.prod && $.util.env.watch ? watchBundle : browserifyBundle),
     config.paths.stage
   );
 });
