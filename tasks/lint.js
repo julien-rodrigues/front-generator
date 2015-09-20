@@ -36,7 +36,7 @@ let displayError = function() {
 };
 
 /**
- * Lint javascript build task.
+ * Lint JavaScript files task.
  */
 gulp.task('eslint', done => {
   let linterMsg = null;

@@ -4,10 +4,12 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
 
+let buildTasks = [
+  'eslint', 'clean:pre-build', 'copy:stage',
+  'styles', 'scripts', 'clean:stage', 'copy:build'
+];
 
-/**
- * Build task.
- */
+// If we launched the build task without arguments.
 if (('build' === $.util.env._[0]) && (!$.util.env.watch && !$.util.env.prod)) {
   $.util.log($.util.colors.yellow(`
 
@@ -17,10 +19,15 @@ if (('build' === $.util.env._[0]) && (!$.util.env.watch && !$.util.env.prod)) {
   `));
 }
 
-gulp.task('build', [
-  'eslint', 'clean:pre-build', 'copy:stage', 'styles',
-  'scripts', 'clean:stage', 'copy:build'
-], () => {
+// If we launched a production build.
+if ($.util.env.prod) {
+  buildTasks.push('html');
+}
+
+/**
+ * Build task.
+ */
+gulp.task('build', buildTasks, () => {
   gulp.start('clean:build', () => {
     if (!$.util.env.prod && $.util.env.watch) {
       $.util.env.watching = true;

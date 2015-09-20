@@ -11,5 +11,13 @@ export default {
   },
   scripts: {
     entryPoint: 'main.js'
+  },
+  html: {
+    minifier: {
+      empty: true,
+      spare: true,
+      quotes: true,
+      conditionals: true
+    }
   }
 };
