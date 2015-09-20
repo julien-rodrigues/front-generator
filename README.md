@@ -20,7 +20,6 @@ This is just a security.
 
 
 #TODO
-- HTML compression
 - Cache buster
 - SASS linter
 - Browser Sync
