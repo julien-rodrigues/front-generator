@@ -37,7 +37,7 @@ let watchBundle = watchify(browserify(watchifyOpts))
  * @param {string} destination - Bundle destination.
  * @return {object} The stream.
  */
-let scriptsBundle = (bundleType, destination) => {
+let scriptsBundle = function(bundleType, destination) {
   return bundleType
     .bundle()
     .pipe(source(config.scripts.entryPoint))

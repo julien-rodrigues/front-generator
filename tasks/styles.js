@@ -12,9 +12,9 @@ const $ = gulpLoadPlugins();
  * @param {string} destination - Compiled destination.
  * @return {object} The stream.
  */
-let stylesBundle = (source, destination) => {
+let stylesBundle = function(source, destination) {
   return gulp.src(`${source}/${config.styles.entryPoint}`)
-    .pipe($.if(!$.util.env.prod, $.plumber()))
+    .pipe($.if((!$.util.env.prod && $.util.env.watch), $.plumber()))
     .pipe($.if(!$.util.env.prod, $.sourcemaps.init()))
     .pipe(
       $.sass.sync({
@@ -40,7 +40,9 @@ let stylesBundle = (source, destination) => {
 gulp.task('styles', ['copy:stage'], () => {
   if (!$.util.env.prod && $.util.env.watch) {
     gulp.watch(`${config.paths.source}/**/*.scss`, () => {
-      return stylesBundle(config.paths.source, config.paths.dist);
+      gulp.start('scss-lint', () => {
+        return stylesBundle(config.paths.source, config.paths.dist);
+      });
     });
   }
   return stylesBundle(config.paths.stage, config.paths.stage);

@@ -6,26 +6,22 @@ import gulp from 'gulp';
 /**
  * Clean build task.
  */
-gulp.task('clean:pre-build', ['eslint'], cb => del([
+gulp.task('clean:pre-build', ['scss-lint', 'eslint'], done => del([
   config.paths.dist, config.paths.stage
-], cb));
+], done));
 
 
 /**
  * Clean stage task.
  */
-gulp.task('clean:stage', ['scripts', 'styles'], cb => {
-  return del([
-    `${config.paths.stage}/**/*.scss`,
-    `${config.paths.stage}/**/*.js`,
-    `!${config.paths.stage}/${config.scripts.entryPoint}`
-  ], cb);
-});
+gulp.task('clean:stage', ['scripts', 'styles'], done => del([
+  `${config.paths.stage}/**/*.scss`,
+  `${config.paths.stage}/**/*.js`,
+  `!${config.paths.stage}/${config.scripts.entryPoint}`
+], done));
 
 
 /**
  * Remove stage task.
  */
-gulp.task('clean:build', cb => {
-  return del([config.paths.stage], cb);
-});
+gulp.task('clean:build', done => del([config.paths.stage], done));

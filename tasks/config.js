@@ -7,7 +7,10 @@ export default {
   },
   styles: {
     autoprefixer: 'last 1 version',
-    entryPoint: 'main.scss'
+    entryPoint: 'main.scss',
+    linter: {
+      config: '.scss-lint.yml'
+    }
   },
   scripts: {
     entryPoint: 'main.js'

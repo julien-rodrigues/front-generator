@@ -14,14 +14,19 @@ This is just a security.
 # Includes
 - Gulp
 - SASS
+- SCSSLint
 - Babel
 - Eslint
 - Browserify
 
 
+# Methodologies
+- BEM
+- Flux
+
+
 #TODO
 - Cache buster
-- SASS linter
 - Browser Sync
 - FTP push?!
 

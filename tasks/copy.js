@@ -8,7 +8,7 @@ const $ = gulpLoadPlugins();
 /**
  * Copy to stage task.
  */
-gulp.task('copy:stage', ['clean:build'], () => {
+gulp.task('copy:stage', ['clean:pre-build'], () => {
   return gulp.src(`${config.paths.source}/**/*.*`)
     .pipe(gulp.dest(config.paths.stage))
     .pipe($.size({title: 'Pre-build size'}))

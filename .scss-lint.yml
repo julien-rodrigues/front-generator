@@ -1,0 +1,14 @@
+scss_files: 'src/**.*.scss'
+
+linters:
+  BemDepth:
+    enabled: true
+
+  Comment:
+    enabled: false
+
+  PropertyUnits:
+    enabled: false
+
+  SelectorFormat:
+    convention: hyphenated_BEM
