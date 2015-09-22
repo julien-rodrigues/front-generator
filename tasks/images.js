@@ -15,5 +15,7 @@ gulp.task('images', ['copy:stage'], () => {
       optimizationLevel: 3,
       progressive: true
     }))
-    .pipe(gulp.dest(`${config.paths.stage}${config.paths.images}`));
+    .pipe(gulp.dest(`${config.paths.stage}${config.paths.images}`))
+    .pipe($.size({title: 'Production images size'}))
+    .on('error', $.util.log);
 });
