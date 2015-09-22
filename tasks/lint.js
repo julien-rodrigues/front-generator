@@ -58,7 +58,7 @@ let errorWarning = function(stream = null) {
  * @return {stream} The file stream.
  */
 let scssCustomReporter = function(file) {
-  if (!scssLintFailed) {
+  if (!scssLintFailed && !file.scsslint.success) {
     scssLintFailed = true;
   }
 

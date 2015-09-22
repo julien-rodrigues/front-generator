@@ -21,8 +21,9 @@ if (('build' === $.util.env._[0]) && (!$.util.env.watch && !$.util.env.prod)) {
 
 // If we launched a production build.
 if ($.util.env.prod) {
-  buildTasks.push('html');
+  buildTasks.push('html', 'images');
 }
+
 
 /**
  * Build task.

@@ -31,6 +31,7 @@
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",
     "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.3.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-minify-html": "^1.0.4",
     "gulp-plumber": "^1.0.1",

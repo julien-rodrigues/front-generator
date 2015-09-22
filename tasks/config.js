@@ -3,7 +3,8 @@ export default {
     dist: 'dist/',
     source: 'src/',
     stage: '.stage/',
-    tasks: './tasks/'
+    tasks: './tasks/',
+    images: 'assets/img/'
   },
   styles: {
     autoprefixer: 'last 1 version',
