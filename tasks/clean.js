@@ -14,7 +14,7 @@ let cleanStagePatterns = [
 // If we launched a production build.
 if ($.util.env.prod) {
   cleanStageDeps.push('images', 'cache-buster');
-  cleanStagePatterns.push(`!${config.paths.stage}${config.scripts.entryPoint.split('.')[0]}*-*.js`);
+  cleanStagePatterns.push(`!${config.paths.stage}${config.scripts.entryPoint.substr(0, config.scripts.entryPoint.lastIndexOf('.'))}*.js`);
 } else {
   cleanStagePatterns.push(`!${config.paths.stage}${config.scripts.entryPoint}`);
 }

@@ -3,6 +3,7 @@ export default {
     manifest: 'cache-manifest.json'
   },
   html: {
+    entryPoint: 'index.html',
     minifier: {
       conditionals: true,
       empty: true,

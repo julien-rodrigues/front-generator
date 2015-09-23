@@ -1,6 +1,4 @@
-import lol from './ok';
-
-let x = lol.ok;
+let x = 'assets/img/the_witcher.jpg';
 
 
 let LolilolOk = function(target) {

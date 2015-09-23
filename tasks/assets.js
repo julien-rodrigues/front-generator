@@ -26,12 +26,12 @@ let deleteOriginalFile = function() {
 
 
 /**
- * Cache busting task.
+ * Cache revision task.
  */
-gulp.task('cache-buster', ['images', 'scripts', 'styles'], () => {
+gulp.task('cache-revision', ['images', 'scripts', 'styles'], () => {
   return gulp.src([
     `${config.paths.stage}${config.scripts.entryPoint}`,
-    `${config.paths.stage}${config.styles.entryPoint.split('.')[0]}*.css`,
+    `${config.paths.stage}${config.styles.entryPoint.substr(0, config.styles.entryPoint.lastIndexOf('.'))}*.css`,
     `${config.paths.stage}${config.paths.assets}**/*.*`
   ], {base: config.paths.stage}).pipe($.rev())
     .pipe(gulp.dest(config.paths.stage))
@@ -40,6 +40,19 @@ gulp.task('cache-buster', ['images', 'scripts', 'styles'], () => {
       merge: true,
       path: config.cache.manifest
     }))
+    .pipe(gulp.dest(config.paths.stage))
+    .on('error', $.util.log);
+});
+
+/**
+ * Cache busting task. .substr(0, 'main.js'.lastIndexOf("."))
+ */
+gulp.task('cache-buster', ['cache-revision'], () => {
+  return gulp.src([
+    `${config.paths.stage}${config.html.entryPoint}`,
+    `${config.paths.stage}${config.styles.entryPoint.substr(0, config.styles.entryPoint.lastIndexOf('.'))}*.css`,
+    `${config.paths.stage}${config.scripts.entryPoint.substr(0, config.scripts.entryPoint.lastIndexOf('.'))}*.js`
+  ]).pipe($.revReplace({manifest: gulp.src(`${config.paths.stage}${config.cache.manifest}`)}))
     .pipe(gulp.dest(config.paths.stage))
     .on('error', $.util.log);
 });
