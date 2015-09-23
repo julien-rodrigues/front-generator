@@ -1,4 +1,7 @@
-let x = 0;
+import lol from './ok';
+
+let x = lol.ok;
+
 
 let LolilolOk = function(target) {
   target.plpl = x;

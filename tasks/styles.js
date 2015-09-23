@@ -18,9 +18,9 @@ let stylesBundle = function(source, destination) {
     .pipe($.if(!$.util.env.prod, $.sourcemaps.init()))
     .pipe(
       $.sass.sync({
-        outputStyle: ($.util.env.prod ? 'compressed' : 'expanded'),
+        includePaths: ['.'],
         precision: 10,
-        includePaths: ['.']
+        outputStyle: ($.util.env.prod ? 'compressed' : 'expanded')
       }).on('error', $.util.log)
     )
     .pipe($.autoprefixer({
