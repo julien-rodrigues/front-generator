@@ -26,7 +26,6 @@ This is just a security.
 
 
 #TODO
-- Cache buster
 - Browser Sync
 - FTP push?!
 
