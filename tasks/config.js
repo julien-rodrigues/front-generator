@@ -2,6 +2,9 @@ export default {
   cache: {
     manifest: 'cache-manifest.json'
   },
+  cdn: {
+    host: 'https://cdn.test.com/'
+  },
   html: {
     entryPoint: 'index.html',
     minifier: {

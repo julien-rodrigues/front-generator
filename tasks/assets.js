@@ -2,6 +2,7 @@ import config from './config';
 import del from 'del';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
+import normalizeUrl from 'normalize-url';
 import through from 'through2';
 
 const $ = gulpLoadPlugins();
@@ -26,6 +27,39 @@ let deleteOriginalFile = function() {
 
 
 /**
+ * Prefix busted urls with CDN host.
+ * @method cdnPrefix
+ * @return {object} The stream.
+ */
+let cdnPrefix = function() {
+  return through.obj(function(file, enc, done) {
+    let manifest = JSON.parse(file.contents);
+    let newManifest = null;
+
+    if (config.cdn && config.cdn.host) {
+      for (let i in manifest) {
+        if (manifest.hasOwnProperty(i)) {
+          manifest[i] = normalizeUrl(config.cdn.host + manifest[i], {
+            normalizeProtocol: false
+          });
+        }
+      }
+    }
+
+    newManifest = new $.util.File({
+      base: file.base,
+      contents: new Buffer(JSON.stringify(manifest, null, 2)),
+      cwd: file.cwd,
+      path: file.path
+    });
+
+    this.push(newManifest);
+    done();
+  });
+};
+
+
+/**
  * Cache revision task.
  */
 gulp.task('cache-revision', ['images', 'scripts', 'styles'], () => {
@@ -44,10 +78,22 @@ gulp.task('cache-revision', ['images', 'scripts', 'styles'], () => {
     .on('error', $.util.log);
 });
 
+
 /**
- * Cache busting task. .substr(0, 'main.js'.lastIndexOf("."))
+ * Cache busting task.
  */
-gulp.task('cache-buster', ['cache-revision'], () => {
+gulp.task('cdn-prefix', ['cache-revision'], () => {
+  return gulp.src(`${config.paths.stage}${config.cache.manifest}`)
+    .pipe(cdnPrefix())
+    .pipe(gulp.dest(config.paths.stage))
+    .on('error', $.util.log);
+});
+
+
+/**
+ * Cache busting task.
+ */
+gulp.task('cache-buster', ['cdn-prefix'], () => {
   return gulp.src([
     `${config.paths.stage}${config.html.entryPoint}`,
     `${config.paths.stage}${config.styles.entryPoint.substr(0, config.styles.entryPoint.lastIndexOf('.'))}*.css`,
