@@ -29,6 +29,7 @@ This is just a security.
 - Sprite generator
 - Browser Sync
 - Tests
+- Karma
 - Drone or Travis
 
 
