@@ -26,8 +26,8 @@ This is just a security.
 
 
 #TODO
+- Sprite generator
 - Browser Sync
-- FTP push?!
 
 
 # Future
