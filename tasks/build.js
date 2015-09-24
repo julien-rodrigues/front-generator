@@ -5,7 +5,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 const $ = gulpLoadPlugins();
 
 let buildTasks = [
-  'eslint', 'clean:pre-build', 'copy:stage',
+  'eslint', 'clean:pre-build', 'copy:stage', 'create-sprites',
   'styles', 'scripts', 'clean:stage', 'copy:build'
 ];
 
@@ -21,7 +21,7 @@ if (('build' === $.util.env._[0]) && (!$.util.env.watch && !$.util.env.prod)) {
 
 // If we launched a production build.
 if ($.util.env.prod) {
-  buildTasks.push('html', 'images', 'cache-buster');
+  buildTasks.push('html', 'compress-images', 'cache-buster');
 }
 
 

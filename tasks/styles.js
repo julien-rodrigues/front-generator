@@ -37,7 +37,7 @@ let stylesBundle = function(source, destination) {
 /**
  * Styles task.
  */
-gulp.task('styles', ['copy:stage'], () => {
+gulp.task('styles', ['copy:stage', 'create-sprites'], () => {
   if (!$.util.env.prod && $.util.env.watch) {
     gulp.watch(`${config.paths.source}/**/*.scss`, () => {
       gulp.start('scss-lint', () => {

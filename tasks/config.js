@@ -14,11 +14,16 @@ export default {
       quotes: true
     }
   },
+  images: {
+    mappingFile: '_sprite.scss',
+    sprite: 'sprite.png'
+  },
   paths: {
     assets: 'assets/',
     dist: 'dist/',
     images: 'assets/img/',
     source: 'src/',
+    sprite: 'assets/img/sprite',
     stage: '.stage/',
     tasks: './tasks/'
   },
