@@ -28,6 +28,8 @@ This is just a security.
 #TODO
 - Sprite generator
 - Browser Sync
+- Tests
+- Drone or Travis
 
 
 # Future
