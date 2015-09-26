@@ -1,4 +1,4 @@
-import config from './tasks/config';
+import config from './config';
 import wrench from 'wrench';
 
 

@@ -1,4 +1,4 @@
-import config from './config';
+import config from '../config';
 import eslint from 'eslint/lib/cli';
 import globby from 'globby';
 import gulp from 'gulp';

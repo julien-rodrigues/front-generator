@@ -2,7 +2,7 @@ import {assign} from 'lodash';
 import babelify from 'babelify';
 import browserify from 'browserify';
 import buffer from 'vinyl-buffer';
-import config from './config';
+import config from '../config';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import source from 'vinyl-source-stream';
