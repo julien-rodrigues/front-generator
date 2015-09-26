@@ -30,6 +30,9 @@ export default {
   scripts: {
     entryPoint: 'main.js'
   },
+  server: {
+    port: 3000
+  },
   styles: {
     autoprefixer: 'last 1 version',
     entryPoint: 'main.scss',

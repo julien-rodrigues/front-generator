@@ -2,7 +2,9 @@
 
 require('babel/register');
 
+var appPackage = require('./package.json');
 var config = require('./config');
+var debug = require('debug')(appPackage.name);
 var express = require('express');
 var renderFile = require('ejs').renderFile;
 var server = express();
@@ -15,6 +17,6 @@ server.get('/', function(req, res) {
   res.render(config.html.entryPoint);
 });
 
-server.listen(3000, function() {
-  console.log('Development server ready => localhost:3000');
+server.listen(config.server.port, function() {
+  debug('Development server ready => localhost:' + config.server.port);
 });
