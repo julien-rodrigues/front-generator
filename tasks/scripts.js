@@ -1,7 +1,7 @@
 import {assign} from 'lodash';
 import babelify from 'babelify';
-import {reload as bSReload} from 'browser-sync';
 import browserify from 'browserify';
+import {reload as bSReload} from 'browser-sync';
 import buffer from 'vinyl-buffer';
 import config from './config';
 import gulp from 'gulp';
@@ -12,7 +12,7 @@ import watchify from 'watchify';
 const $ = gulpLoadPlugins();
 
 let browserifyOpts = {
-  entries: [`${config.paths.source}/${config.scripts.entryPoint}`],
+  entries: [config.paths.source + config.scripts.entryPoint],
   debug: !$.util.env.prod
 };
 

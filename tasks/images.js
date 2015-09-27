@@ -66,7 +66,7 @@ let cdnPrefix = function() {
  * Cache busting task.
  */
 gulp.task('cdn-prefix', ['cache-revision'], () => {
-  return gulp.src(`${config.paths.stage}${config.cache.manifest}`)
+  return gulp.src(config.paths.stage + config.cache.manifest)
     .pipe(cdnPrefix())
     .pipe(gulp.dest(config.paths.stage))
     .on('error', $.util.log);
@@ -79,7 +79,7 @@ gulp.task('cdn-prefix', ['cache-revision'], () => {
 gulp.task('create-sprite', () => {
   return gulp.src(`${config.paths.source}${config.paths.sprite}**/*.*`)
     .pipe(spritesmith({
-      imgName: `${config.paths.images}${config.images.sprite}`,
+      imgName: config.paths.images + config.images.sprite,
       cssName: config.images.mappingFile
     }))
     .pipe(gulp.dest(config.paths.source))
@@ -92,12 +92,8 @@ gulp.task('create-sprite', () => {
  */
 gulp.task('compress-images', ['copy:stage'], () => {
   return gulp.src(`${config.paths.stage}${config.paths.images}**/*.*`)
-    .pipe($.imagemin({
-      interlaced: true,
-      progressive: true,
-      optimizationLevel: 3
-    }))
-    .pipe(gulp.dest(`${config.paths.stage}${config.paths.images}`))
+    .pipe($.imagemin(config.images.imageMin))
+    .pipe(gulp.dest(config.paths.stage + config.paths.images))
     .pipe($.size({title: 'Production images size'}))
     .on('error', $.util.log);
 });

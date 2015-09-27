@@ -15,6 +15,11 @@ export default {
     }
   },
   images: {
+    imageMin: {
+      interlaced: true,
+      progressive: true,
+      optimizationLevel: 3
+    },
     mappingFile: '_sprite.scss',
     sprite: 'sprite.png'
   },

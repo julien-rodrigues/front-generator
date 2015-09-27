@@ -9,13 +9,14 @@ let cleanStageDeps = ['scripts', 'styles'];
 let cleanStagePatterns = [
   `${config.paths.stage}/**/*.scss`,
   `${config.paths.stage}/**/*.js`,
-  `${config.paths.stage}${config.paths.sprite}`
+  config.paths.stage + config.paths.sprite
 ];
 
 // If we launched a production build.
 if ($.util.env.prod) {
   cleanStageDeps.push('compress-images', 'cache-buster');
-  cleanStagePatterns.push(`!${config.paths.stage}${config.scripts.entryPoint.substr(0, config.scripts.entryPoint.lastIndexOf('.'))}*.js`);
+  cleanStagePatterns
+    .push(`!${config.paths.stage}${config.scripts.entryPoint.substr(0, config.scripts.entryPoint.lastIndexOf('.'))}*.js`);
 } else {
   cleanStagePatterns.push(`!${config.paths.stage}${config.scripts.entryPoint}`);
 }
@@ -24,9 +25,8 @@ if ($.util.env.prod) {
 /**
  * Clean build task.
  */
-gulp.task('clean:pre-build', ['scss-lint', 'eslint', 'create-sprite'], done => del([
-  config.paths.dist, config.paths.stage
-], done));
+gulp.task('clean:pre-build', ['scss-lint', 'eslint', 'create-sprite'], done =>
+  del([config.paths.dist, config.paths.stage], done));
 
 
 /**
