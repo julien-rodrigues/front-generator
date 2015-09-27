@@ -1,5 +1,6 @@
 import {assign} from 'lodash';
 import babelify from 'babelify';
+import {reload as bSReload} from 'browser-sync';
 import browserify from 'browserify';
 import buffer from 'vinyl-buffer';
 import config from '../config';
@@ -44,6 +45,7 @@ let scriptsBundle = function(bundleType, destination) {
     .pipe(buffer())
     .pipe($.if($.util.env.prod, $.uglify()))
     .pipe(gulp.dest(destination))
+    .pipe($.if($.util.env.watching, bSReload({stream: true})))
     .pipe($.if(!$.util.env.prod, $.size({title: 'Development scripts size'})))
     .pipe($.if($.util.env.prod, $.size({title: 'Production scripts size'})))
     .on('error', $.util.log);

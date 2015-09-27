@@ -1,3 +1,4 @@
+import {reload as bSReload} from 'browser-sync';
 import config from '../config';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
@@ -6,6 +7,23 @@ import spritesmith from 'gulp.spritesmith';
 import through from 'through2';
 
 const $ = gulpLoadPlugins();
+
+if (!$.util.env.prod && $.util.env.watch) {
+  gulp.watch([
+    `${config.paths.source}${config.paths.images}**/*.*`,
+    `!${config.paths.source}${config.paths.sprite}**/*.*`
+  ], changed => {
+    return gulp.src(changed.path, {base: config.paths.source})
+      .pipe(gulp.dest(config.paths.dist))
+      .pipe(bSReload({stream: true}))
+      .pipe($.size({title: 'Modified image size'}))
+      .on('error', $.util.log);
+  });
+
+  gulp.watch(`${config.paths.source}${config.paths.sprite}**/*.*`, () => {
+    gulp.start('create-sprite');
+  });
+}
 
 
 /**
@@ -55,13 +73,13 @@ gulp.task('cdn-prefix', ['cache-revision'], () => {
 /**
  * Sprite creation task.
  */
-gulp.task('create-sprites', ['copy:stage'], () => {
-  return gulp.src(`${config.paths.stage}${config.paths.sprite}**/*.*`)
+gulp.task('create-sprite', () => {
+  return gulp.src(`${config.paths.source}${config.paths.sprite}**/*.*`)
     .pipe(spritesmith({
       imgName: `${config.paths.images}${config.images.sprite}`,
       cssName: config.images.mappingFile
     }))
-    .pipe(gulp.dest(config.paths.stage))
+    .pipe(gulp.dest(config.paths.source))
     .on('error', $.util.log);
 });
 
@@ -69,7 +87,7 @@ gulp.task('create-sprites', ['copy:stage'], () => {
 /**
  * Image compression task.
  */
-gulp.task('compress-images', ['copy:stage', 'create-sprites'], () => {
+gulp.task('compress-images', ['copy:stage'], () => {
   return gulp.src(`${config.paths.stage}${config.paths.images}**/*.*`)
     .pipe($.imagemin({
       interlaced: true,

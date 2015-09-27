@@ -5,8 +5,8 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 const $ = gulpLoadPlugins();
 
 let buildTasks = [
-  'eslint', 'clean:pre-build', 'copy:stage', 'create-sprites',
-  'styles', 'scripts', 'clean:stage', 'copy:build'
+  'eslint', 'create-sprite', 'clean:pre-build', 'copy:stage',
+  'styles', 'scripts', 'clean:stage', 'copy:build', 'clean:build'
 ];
 
 // If we launched the build task without arguments.
@@ -29,13 +29,16 @@ if ($.util.env.prod) {
  * Build task.
  */
 gulp.task('build', buildTasks, () => {
-  gulp.start('clean:build', () => {
-    if (!$.util.env.prod && $.util.env.watch) {
-      $.util.env.watching = true;
-      $.util.log($.util.colors.green('** Watching files for changes **'));
-    } else {
-      $.util.log($.util.colors.green(
-        `** Your build is ready in ${config.paths.dist} **`));
+  if (!$.util.env.prod && $.util.env.watch) {
+    $.util.env.watching = true;
+    $.util.log($.util.colors.green('** Watching files for changes **'));
+    gulp.start('serve');
+  } else {
+    $.util.log($.util.colors.green(
+      `** Your build is ready in ${config.paths.dist} **`));
+
+    if (!$.util.env.prod) {
+      gulp.start('serve');
     }
-  });
+  }
 });

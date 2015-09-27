@@ -5,7 +5,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
 
-let cleanStageDeps = ['scripts', 'styles', 'create-sprites'];
+let cleanStageDeps = ['scripts', 'styles'];
 let cleanStagePatterns = [
   `${config.paths.stage}/**/*.scss`,
   `${config.paths.stage}/**/*.js`,
@@ -24,7 +24,7 @@ if ($.util.env.prod) {
 /**
  * Clean build task.
  */
-gulp.task('clean:pre-build', ['scss-lint', 'eslint'], done => del([
+gulp.task('clean:pre-build', ['scss-lint', 'eslint', 'create-sprite'], done => del([
   config.paths.dist, config.paths.stage
 ], done));
 
@@ -38,4 +38,4 @@ gulp.task('clean:stage', cleanStageDeps, done => del(cleanStagePatterns, done));
 /**
  * Remove stage task.
  */
-gulp.task('clean:build', done => del([config.paths.stage], done));
+gulp.task('clean:build', ['copy:build'], done => del([config.paths.stage], done));

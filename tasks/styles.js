@@ -1,8 +1,17 @@
+import {reload as bSReload} from 'browser-sync';
 import config from '../config';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
+
+if (!$.util.env.prod && $.util.env.watch) {
+  gulp.watch(`${config.paths.source}/**/*.scss`, () => {
+    gulp.start('scss-lint', () => {
+      return stylesBundle(config.paths.source, config.paths.dist);
+    });
+  });
+}
 
 
 /**
@@ -28,6 +37,7 @@ let stylesBundle = function(source, destination) {
     }))
     .pipe($.if(!$.util.env.prod, $.sourcemaps.write()))
     .pipe(gulp.dest(destination))
+    .pipe($.if($.util.env.watching, bSReload({stream: true})))
     .pipe($.if(!$.util.env.prod, $.size({title: 'Development styles size'})))
     .pipe($.if($.util.env.prod, $.size({title: 'Production styles size'})))
     .on('error', $.util.log);
@@ -37,13 +47,6 @@ let stylesBundle = function(source, destination) {
 /**
  * Styles task.
  */
-gulp.task('styles', ['copy:stage', 'create-sprites'], () => {
-  if (!$.util.env.prod && $.util.env.watch) {
-    gulp.watch(`${config.paths.source}/**/*.scss`, () => {
-      gulp.start('scss-lint', () => {
-        return stylesBundle(config.paths.source, config.paths.dist);
-      });
-    });
-  }
+gulp.task('styles', ['copy:stage'], () => {
   return stylesBundle(config.paths.stage, config.paths.stage);
 });

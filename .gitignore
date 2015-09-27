@@ -1,6 +1,8 @@
 ### Project
 dist/
 .stage/
+src/_sprite.scss
+src/assets/img/sprite.png
 
 ### Node
 node_modules/

@@ -2,7 +2,7 @@ let x = 'assets/img/the_witcher.jpg';
 
 
 let LolilolOk = function(target) {
-  target.plpl = x;
+  target.plpsl = x;
   return target;
 };
 

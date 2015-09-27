@@ -108,7 +108,7 @@ gulp.task('eslint', done => {
  * Lint SCSS files task.
  */
 gulp.task('scss-lint', () => {
-  return gulp.src(`${config.paths.source}/**/*.scss`)
+  return gulp.src([`${config.paths.source}/**/*.scss`, `!${config.paths.source}${config.images.mappingFile}`])
     .pipe($.scssLint({
       config: config.styles.linter.config,
       customReport: scssCustomReporter
