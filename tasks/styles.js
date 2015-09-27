@@ -1,10 +1,11 @@
 import {reload as bSReload} from 'browser-sync';
-import config from '../config';
+import config from './config';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
 
+// Watch task.
 if (!$.util.env.prod && $.util.env.watch) {
   gulp.watch(`${config.paths.source}/**/*.scss`, () => {
     gulp.start('scss-lint', () => {

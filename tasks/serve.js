@@ -1,6 +1,6 @@
-
+import appPackage from '../package.json';
 import browserSync from 'browser-sync';
-import config from '../config';
+import config from './config';
 import gulp from 'gulp';
 
 
@@ -9,7 +9,7 @@ import gulp from 'gulp';
  */
 gulp.task('serve', () => {
   browserSync({
-    logPrefix: 'front-generator',
+    logPrefix: appPackage.name,
     reloadOnRestart: true,
     server: config.paths.dist
   });

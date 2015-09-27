@@ -1,5 +1,5 @@
 import {reload as bSReload} from 'browser-sync';
-import config from '../config';
+import config from './config';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import normalizeUrl from 'normalize-url';
@@ -8,7 +8,9 @@ import through from 'through2';
 
 const $ = gulpLoadPlugins();
 
+// Watch tasks.
 if (!$.util.env.prod && $.util.env.watch) {
+  // Watch for changes in images, excluding sprite images.
   gulp.watch([
     `${config.paths.source}${config.paths.images}**/*.*`,
     `!${config.paths.source}${config.paths.sprite}**/*.*`
@@ -20,6 +22,7 @@ if (!$.util.env.prod && $.util.env.watch) {
       .on('error', $.util.log);
   });
 
+  // Watch for changes only in sprite images.
   gulp.watch(`${config.paths.source}${config.paths.sprite}**/*.*`, () => {
     gulp.start('create-sprite');
   });
