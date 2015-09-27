@@ -16,13 +16,13 @@ This is just a security.
 - Babel
 - Eslint
 - Browserify
+- Browsersync
 
 # Methodologies
 - BEM
 - Flux
 
 #TODO
-- Browser Sync
 - Tests
 - Karma
 - Drone or Travis
