@@ -1,5 +1,6 @@
 import {reload as bSReload} from 'browser-sync';
 import config from './config';
+import del from 'del';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import normalizeUrl from 'normalize-url';
@@ -7,26 +8,6 @@ import spritesmith from 'gulp.spritesmith';
 import through from 'through2';
 
 const $ = gulpLoadPlugins();
-
-// Watch tasks.
-if (!$.util.env.prod && $.util.env.watch) {
-  // Watch for changes in images, excluding sprite images.
-  gulp.watch([
-    `${config.paths.source}${config.paths.images}**/*.*`,
-    `!${config.paths.source}${config.paths.sprite}**/*.*`
-  ], changed => {
-    return gulp.src(changed.path, {base: config.paths.source})
-      .pipe(gulp.dest(config.paths.dist))
-      .pipe(bSReload({stream: true}))
-      .pipe($.size({title: 'Modified image size'}))
-      .on('error', $.util.log);
-  });
-
-  // Watch for changes only in sprite images.
-  gulp.watch(`${config.paths.source}${config.paths.sprite}**/*.*`, () => {
-    gulp.start('create-sprite');
-  });
-}
 
 
 /**
@@ -96,4 +77,33 @@ gulp.task('compress-images', ['copy:stage'], () => {
     .pipe(gulp.dest(config.paths.stage + config.paths.images))
     .pipe($.size({title: 'Production images size'}))
     .on('error', $.util.log);
+});
+
+
+/**
+ * Watch task.
+ */
+gulp.task('watch:images', ['serve'], () => {
+  // Watch for changes,  excluding sprite images.
+  gulp.watch([
+    `${config.paths.source}${config.paths.images}**/*.*`,
+    `!${config.paths.source}${config.paths.sprite}**/*.*`
+  ], changed => {
+    if ('deleted' === changed.type) {
+      del([
+        `dist/${changed.path.substr(changed.path.indexOf(config.paths.source) + config.paths.source.length)}`
+      ]);
+    } else {
+      return gulp.src(changed.path, {base: config.paths.source})
+        .pipe(gulp.dest(config.paths.dist))
+        .pipe(bSReload({stream: true}))
+        .pipe($.size({title: 'Modified image size'}))
+        .on('error', $.util.log);
+    }
+  });
+
+  // Watch for changes, only in sprite images.
+  gulp.watch(`${config.paths.source}${config.paths.sprite}**/*.*`, () => {
+    gulp.start('create-sprite');
+  });
 });

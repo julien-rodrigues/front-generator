@@ -7,7 +7,7 @@ import gulp from 'gulp';
 /**
  * Serve task.
  */
-gulp.task('serve', () => {
+gulp.task('serve', ['clean:build'], () => {
   browserSync({
     logPrefix: appPackage.name,
     reloadOnRestart: true,

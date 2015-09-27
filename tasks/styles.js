@@ -5,15 +5,6 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
 
-// Watch task.
-if (!$.util.env.prod && $.util.env.watch) {
-  gulp.watch(`${config.paths.source}/**/*.scss`, () => {
-    gulp.start('scss-lint', () => {
-      return stylesBundle(config.paths.source, config.paths.dist);
-    });
-  });
-}
-
 
 /**
  * Bundle all styles.
@@ -23,7 +14,7 @@ if (!$.util.env.prod && $.util.env.watch) {
  * @return {object} The stream.
  */
 let stylesBundle = function(source, destination) {
-  return gulp.src(`${source}/${config.styles.entryPoint}`)
+  return gulp.src(source + config.styles.entryPoint)
     .pipe($.if((!$.util.env.prod && $.util.env.watch), $.plumber()))
     .pipe($.if(!$.util.env.prod, $.sourcemaps.init()))
     .pipe(
@@ -50,4 +41,16 @@ let stylesBundle = function(source, destination) {
  */
 gulp.task('styles', ['copy:stage'], () => {
   return stylesBundle(config.paths.stage, config.paths.stage);
+});
+
+
+/**
+ * Watch task.
+ */
+gulp.task('watch:styles', ['serve'], () => {
+  gulp.watch(`${config.paths.source}/**/*.scss`, () => {
+    gulp.start('scss-lint', () => {
+      return stylesBundle(config.paths.source, config.paths.dist);
+    });
+  });
 });

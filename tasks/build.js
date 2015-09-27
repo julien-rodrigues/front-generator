@@ -22,6 +22,10 @@ if (('build' === $.util.env._[0]) && (!$.util.env.watch && !$.util.env.prod)) {
 // If we launched a production build.
 if ($.util.env.prod) {
   buildTasks.push('html', 'compress-images', 'cache-buster');
+} else if ($.util.env.watch) {
+  buildTasks.push('watch');
+} else {
+  buildTasks.push('serve');
 }
 
 
@@ -32,13 +36,14 @@ gulp.task('build', buildTasks, () => {
   if (!$.util.env.prod && $.util.env.watch) {
     $.util.env.watching = true;
     $.util.log($.util.colors.green('** Watching files for changes **'));
-    gulp.start('serve');
   } else {
     $.util.log($.util.colors.green(
       `** Your build is ready in ${config.paths.dist} **`));
-
-    if (!$.util.env.prod) {
-      gulp.start('serve');
-    }
   }
 });
+
+
+/**
+ * Watch task.
+ */
+gulp.task('watch', ['watch:images', 'watch:styles', 'watch:html']);

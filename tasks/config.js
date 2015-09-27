@@ -28,7 +28,7 @@ export default {
     dist: 'dist/',
     images: 'assets/img/',
     source: 'src/',
-    sprite: 'assets/img/sprite',
+    sprite: 'assets/img/sprite/',
     stage: '.stage/',
     tasks: './tasks/'
   },

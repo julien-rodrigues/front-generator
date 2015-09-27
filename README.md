@@ -31,5 +31,5 @@ This is just a security.
 - Flow (Waiting for the ES2015 and ES2016 support)
 
 # Known issues
-- When watching for changes, if you rename an image, it will not remove the old one. But the old image will be removed when a new build is made. As this is a minor issue, I will probably investigate in a far future.
+- FSEventStreamFlushSync(): failed assertion '(SInt64)last_id > 0LL': Gulp logs this warning when changing an image that is being watched... Beside of that, everything works fine.
 - Also, when changes are made to images, we need to manually reload the page. Seems to be a browser cache problem.
