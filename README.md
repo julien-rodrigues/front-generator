@@ -25,10 +25,10 @@ This is just a security.
 #TODO
 - Tests
 - Karma
-- Drone or Travis
 
 # Future
 - Flow (Waiting for the ES2015 and ES2016 support)
+- Drone or Travis
 
 # Known issues
 - FSEventStreamFlushSync(): failed assertion '(SInt64)last_id > 0LL': Gulp logs this warning when changing an image that is being watched... Beside of that, everything works fine.
