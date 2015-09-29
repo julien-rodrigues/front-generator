@@ -1,15 +1,3 @@
-@import 'sprite';
-
-@include sprites($spritesheet-sprites);
-
-$test: rgb(255, 0, 0);
-
-body {
-  background: url('assets/img/the_witcher4.jpg');
-}
-
-/* zdzef */
-.main-header__login-button-icon--active {
-  display: none;
-  margin: 5px + 0;
-}
+// To include sprites, uncomment the following.
+// @import 'sprite';
+// @include sprites($spritesheet-sprites);

@@ -1,7 +1,7 @@
 {
   "name": "front-generator",
   "version": "1.0.0",
-  "description": "Front-end architecture generator including React, Flux, Eslint, Sass, ...",
+  "description": "A front-end generator to build a modern React app.",
   "scripts": {
     "sprite": "gulp create-sprite"
   },
