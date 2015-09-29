@@ -32,7 +32,7 @@ let watchBundle = watchify(browserify(watchifyOpts))
 
 
 /**
- * Bundle all scripts.
+ * Bundles all scripts.
  * @method scriptsBundle
  * @param {object} bundleType - Browserify builder.
  * @param {string} destination - Bundle destination.

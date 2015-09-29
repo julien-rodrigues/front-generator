@@ -8,7 +8,7 @@ const $ = gulpLoadPlugins();
 
 
 /**
- * Delete original file after it has been busted.
+ * Deletes original file after it has been busted.
  * @method deleteOriginalFile
  * @return {object} The stream.
  */

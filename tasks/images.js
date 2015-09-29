@@ -11,7 +11,7 @@ const $ = gulpLoadPlugins();
 
 
 /**
- * Prefix busted urls with CDN host.
+ * Prefixes busted urls with CDN host.
  * @method cdnPrefix
  * @return {object} The stream.
  */
@@ -84,7 +84,7 @@ gulp.task('compress-images', ['copy:stage'], () => {
  * Watch task.
  */
 gulp.task('watch:images', ['serve'], () => {
-  // Watch for changes,  excluding sprite images.
+  // Watches for changes, excluding sprite images.
   gulp.watch([
     `${config.paths.source}${config.paths.images}**/*.*`,
     `!${config.paths.source}${config.paths.sprite}**/*.*`
@@ -102,7 +102,7 @@ gulp.task('watch:images', ['serve'], () => {
     }
   });
 
-  // Watch for changes, only in sprite images.
+  // Watches for changes, only in sprite images.
   gulp.watch(`${config.paths.source}${config.paths.sprite}**/*.*`, () => {
     gulp.start('create-sprite');
   });

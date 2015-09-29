@@ -3,7 +3,7 @@ import wrench from 'wrench';
 
 
 /**
- * Import tasks.
+ * Imports tasks.
  */
 wrench.readdirSyncRecursive(config.paths.tasks).filter(
   file => (/\.(js)$/i).test(file)

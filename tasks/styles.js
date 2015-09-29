@@ -7,7 +7,7 @@ const $ = gulpLoadPlugins();
 
 
 /**
- * Bundle all styles.
+ * Bundles all styles.
  * @method stylesBundle
  * @param {object} source - Source folder.
  * @param {string} destination - Compiled destination.
