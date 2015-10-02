@@ -1,3 +1,4 @@
+import {AppBar} from 'material-ui';
 import React from 'react';
 import {RouteHandler} from 'react-router';
 
@@ -18,6 +19,7 @@ class FrontGenerator extends React.Component {
   render() {
     return (
       <main>
+        <AppBar />
         <RouteHandler />
       </main>
     );

@@ -33,14 +33,14 @@ export default {
     tasks: './tasks/'
   },
   scripts: {
-    entryPoint: 'main.js'
+    entryPoint: 'core.js'
   },
   server: {
     port: 3000
   },
   styles: {
     autoprefixer: 'last 1 version',
-    entryPoint: 'main.scss',
+    entryPoint: 'core.scss',
     linter: {
       config: '.scss-lint.yml'
     }

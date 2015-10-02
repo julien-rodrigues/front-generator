@@ -1,0 +1,16 @@
+/**
+ * Font creation mixin.
+ * @method font-generator
+ * @param {string} name - The font's name.
+ * @param {string} type - The font's weight type.
+ * @param {number} weight - The font's weight.
+ * @param {string} style - The font's style.
+ */
+@mixin font-generator($name, $type, $weight, $style) {
+  @font-face {
+    font-family: $name;
+    src: url($fonts-path + '/' + $name + '-' + $type + '.woff2') format('woff2');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
