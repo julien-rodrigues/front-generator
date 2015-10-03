@@ -2,11 +2,11 @@ import React from 'react';
 
 
 /**
- * Index page component.
- * @class Index
+ * Products page component.
+ * @class Products
  * @extends React.Component
  */
-class Index extends React.Component {
+class Products extends React.Component {
   /**
    * Renders the page.
    * @method render
@@ -15,11 +15,11 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        INDEX PAGE
+        PRODUCTS PAGE
       </div>
     );
   }
 
 }
 
-export default Index;
+export default Products;

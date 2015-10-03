@@ -10,7 +10,7 @@ const $ = gulpLoadPlugins();
 /**
  * Deletes original file after it has been busted.
  * @method deleteOriginalFile
- * @return {object} The stream.
+ * @returns {object} The stream
  */
 let deleteOriginalFile = function() {
   return through.obj(function(file, enc, done) {

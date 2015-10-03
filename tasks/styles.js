@@ -9,9 +9,9 @@ const $ = gulpLoadPlugins();
 /**
  * Bundles all styles.
  * @method stylesBundle
- * @param {object} source - Source folder.
- * @param {string} destination - Compiled destination.
- * @return {object} The stream.
+ * @param {object} source - Source folder
+ * @param {string} destination - Compiled destination
+ * @returns {object} The stream
  */
 let stylesBundle = function(source, destination) {
   return gulp.src(source + config.styles.entryPoint)

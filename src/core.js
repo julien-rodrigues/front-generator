@@ -1,11 +1,14 @@
-import AppRouter from './app/AppRouter';
+import {createHashHistory} from 'history';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import React from 'react';
-import Router from 'react-router';
+import {Router} from 'react-router';
+import routes from './configs/routes';
+
+let history = createHashHistory({
+  queryKey: false
+});
 
 injectTapEventPlugin();
 
 // Renders the application depending on the route.
-Router.run(AppRouter, App => {
-  React.render(<App />, document.body);
-});
+React.render(<Router history={history} routes={routes} />, document.body);

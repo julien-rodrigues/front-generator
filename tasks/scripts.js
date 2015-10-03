@@ -34,9 +34,9 @@ let watchBundle = watchify(browserify(watchifyOpts))
 /**
  * Bundles all scripts.
  * @method scriptsBundle
- * @param {object} bundleType - Browserify builder.
- * @param {string} destination - Bundle destination.
- * @return {object} The stream.
+ * @param {object} bundleType - Browserify builder
+ * @param {string} destination - Bundle destination
+ * @returns {object} The stream
  */
 let scriptsBundle = function(bundleType, destination) {
   return bundleType

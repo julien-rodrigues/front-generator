@@ -13,7 +13,7 @@ const $ = gulpLoadPlugins();
 /**
  * Prefixes busted urls with CDN host.
  * @method cdnPrefix
- * @return {object} The stream.
+ * @returns {object} The stream
  */
 let cdnPrefix = function() {
   return through.obj(function(file, enc, done) {

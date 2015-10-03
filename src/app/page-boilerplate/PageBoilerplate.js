@@ -2,11 +2,11 @@ import React from 'react';
 
 
 /**
- * Index page component.
- * @class Index
+ * A page component boilerplate.
+ * @class PageBoilerplate
  * @extends React.Component
  */
-class Index extends React.Component {
+class PageBoilerplate extends React.Component {
   /**
    * Renders the page.
    * @method render
@@ -15,11 +15,11 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        INDEX PAGE
+        A sample page
       </div>
     );
   }
 
 }
 
-export default Index;
+export default PageBoilerplate;

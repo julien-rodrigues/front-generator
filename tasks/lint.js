@@ -13,8 +13,8 @@ let scssLintFailed = false;
  * Displays errors depending on the environment.
  * Can throw an error and stop the process.
  * @method errorWarning
- * @param {stream} stream - Current stream (optional).
- * @return {object} The error (can be null).
+ * @param {stream} stream - Current stream (optional)
+ * @returns {object} The error (can be null)
  */
 let errorWarning = function(stream = null) {
   let error = null;
@@ -54,8 +54,8 @@ let errorWarning = function(stream = null) {
 /**
  * SCSS lint custom report.
  * @method scssCustomReporter
- * @param {object} file - Current file in stream.
- * @return {stream} The file stream.
+ * @param {object} file - Current file in stream
+ * @returns {stream} The file stream
  */
 let scssCustomReporter = function(file) {
   if (!scssLintFailed && !file.scsslint.success) {
@@ -71,7 +71,7 @@ let scssCustomReporter = function(file) {
 /**
  * SCSS lint on "end" event callback.
  * @method scssEndMessage
- * @return {object} The error (can be null).
+ * @returns {object} The error (can be null)
  */
 let scssEndMessage = function() {
   let linterMsg = null;

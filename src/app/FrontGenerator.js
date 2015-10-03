@@ -1,6 +1,6 @@
 import {AppBar} from 'material-ui';
 import React from 'react';
-import {RouteHandler} from 'react-router';
+import Sidebar from '../common/sidebar/Sidebar';
 
 
 /**
@@ -9,22 +9,42 @@ import {RouteHandler} from 'react-router';
  * @extends React.Component
  */
 class FrontGenerator extends React.Component {
+  /**
+   * Handles the open/close method of the sidebar.
+   * @method appSidebarToggle
+   * @returns {void} Nothing
+   */
+  appSidebarToggle() {
+    this.refs.appSidebar.toggleSidebar();
+  }
+
+
+  /**
+   * @constructor
+   */
+  constructor() {
+    super();
+    this.appSidebarToggle = this.appSidebarToggle.bind(this);
+  }
 
 
   /**
    * Renders the component.
    * @method render
-   * @return {jsx} The component.
+   * @returns {jsx} The component
    */
   render() {
     return (
       <main>
-        <AppBar />
-        <RouteHandler />
+        <Sidebar ref="appSidebar" history={this.props.history} />
+        <AppBar
+          onLeftIconButtonTouchTap={this.appSidebarToggle}
+          title="Front Generator Example"
+        />
+        {this.props.children}
       </main>
     );
   }
-
 }
 
 export default FrontGenerator;
