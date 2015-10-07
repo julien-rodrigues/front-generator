@@ -2,11 +2,11 @@ import React from 'react';
 
 
 /**
- * Index page component.
- * @class Index
+ * Home page component.
+ * @class Home
  * @extends React.Component
  */
-class Index extends React.Component {
+class Home extends React.Component {
   /**
    * Renders the page.
    * @method render
@@ -15,11 +15,11 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        INDEX PAGE
+        HOME PAGE
       </div>
     );
   }
 
 }
 
-export default Index;
+export default Home;

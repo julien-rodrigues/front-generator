@@ -1,14 +1,14 @@
 import {AppBar} from 'material-ui';
 import React from 'react';
-import Sidebar from '../common/sidebar/Sidebar';
+import {Sidebar} from '../../components';
 
 
 /**
  * Application container. Handles state rendering using info from the router.
- * @class FrontGenerator
+ * @class Application
  * @extends React.Component
  */
-class FrontGenerator extends React.Component {
+class Application extends React.Component {
   /**
    * Handles the open/close method of the sidebar.
    * @method appSidebarToggle
@@ -39,7 +39,7 @@ class FrontGenerator extends React.Component {
         <Sidebar ref="appSidebar" history={this.props.history} />
         <AppBar
           onLeftIconButtonTouchTap={this.appSidebarToggle}
-          title="Front Generator Example"
+          title="Application Example"
         />
         {this.props.children}
       </main>
@@ -47,4 +47,4 @@ class FrontGenerator extends React.Component {
   }
 }
 
-export default FrontGenerator;
+export default Application;
