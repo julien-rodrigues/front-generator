@@ -1,14 +1,14 @@
 import {LeftNav} from 'material-ui';
 import menuConfig from '../../configs/menu';
-import React from 'react';
+import React, {Component} from 'react';
 
 
 /**
  * Application's sidebar component.
  * @class Sidebar
- * @extends React.Component
+ * @extends Component
  */
-class Sidebar extends React.Component {
+class Sidebar extends Component {
   /**
    * @constructor
    */

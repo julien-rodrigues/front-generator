@@ -1,14 +1,14 @@
 import {AppBar} from 'material-ui';
-import React from 'react';
+import React, {Component} from 'react';
 import {Sidebar} from '../../components';
 
 
 /**
  * Application container. Handles state rendering using info from the router.
  * @class Application
- * @extends React.Component
+ * @extends Component
  */
-class Application extends React.Component {
+class Application extends Component {
   /**
    * Handles the open/close method of the sidebar.
    * @method appSidebarToggle

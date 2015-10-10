@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 
 /**
  * Home page component.
  * @class Home
- * @extends React.Component
+ * @extends Component
  */
-class Home extends React.Component {
+class Home extends Component {
   /**
    * Renders the page.
    * @method render

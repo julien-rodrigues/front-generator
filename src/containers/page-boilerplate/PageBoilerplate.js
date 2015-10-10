@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 
 /**
  * A page component boilerplate.
  * @class PageBoilerplate
- * @extends React.Component
+ * @extends Component
  */
-class PageBoilerplate extends React.Component {
+class PageBoilerplate extends Component {
   /**
    * Renders the page.
    * @method render

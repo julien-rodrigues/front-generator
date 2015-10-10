@@ -1,8 +1,10 @@
-import {ADD_PRODUCT} from '../actions/products';
+import {ADD_PRODUCT} from '../actions';
 
-const INITIAL_STATE = [{
-  name: 'Bananas'
-}];
+const INITIAL_STATE = {
+  products: [{
+    name: 'Bananas'
+  }]
+};
 
 
 /**
