@@ -1,5 +1,4 @@
-import {ADD_PRODUCT} from '../actions';
-
+const ADD_PRODUCT = 'ADD_PRODUCT';
 const INITIAL_STATE = [{
   name: 'Bananas'
 }];
