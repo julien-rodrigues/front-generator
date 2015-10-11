@@ -1,14 +1,13 @@
 import {createHashHistory} from 'history';
-import {createStore} from 'redux';
+import createStore from './redux/create';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import products from './reducers';
 import {Provider} from 'react-redux';
 import React, {render} from 'react';
 import {Router} from 'react-router';
 import routes from './configs/routes';
 
 // Instanciates application store.
-let store = createStore(products);
+let store = createStore();
 
 // Instanciates application history.
 let history = createHashHistory({
