@@ -20,7 +20,7 @@ This is just a security.
 
 # Methodologies
 - BEM
-- Flux
+- Redux
 
 #TODO
 - Tests
