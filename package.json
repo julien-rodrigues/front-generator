@@ -54,15 +54,14 @@
     "wrench": "^1.5.8"
   },
   "dependencies": {
-    "fbjs": "^0.2.1",
-    "history": "^1.11.1",
-    "material-ui": "^0.12.1",
+    "history": "^1.12.5",
+    "material-ui": "^0.12.4",
     "normalize.css": "^3.0.3",
-    "react": "^0.13.3",
-    "react-dom": "^0.14.0-rc1",
-    "react-redux": "^3.1.0",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-redux": "^4.0.0",
     "react-router": "^1.0.0-rc1",
-    "react-tap-event-plugin": "^0.1.8",
-    "redux": "^3.0.2"
+    "react-tap-event-plugin": "^0.2.1",
+    "redux": "^3.0.3"
   }
 }

@@ -2,7 +2,8 @@ import {createHashHistory} from 'history';
 import createStore from './redux/create';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Provider} from 'react-redux';
-import React, {render} from 'react';
+import React from 'react';
+import {render} from 'react-dom';
 import {Router} from 'react-router';
 import routes from './configs/routes';
 
@@ -20,7 +21,7 @@ injectTapEventPlugin();
 // Renders the application depending on the route.
 render(
   <Provider store={store}>
-    {() => <Router history={history} routes={routes} />}
+    <Router history={history} routes={routes} />
   </Provider>,
-  document.body
+  document.getElementById('front-generator-app')
 );
