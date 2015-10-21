@@ -23,5 +23,5 @@ render(
   <Provider store={store}>
     <Router history={history} routes={routes} />
   </Provider>,
-  document.getElementById('front-generator-app')
+  document.getElementById('app-root')
 );
