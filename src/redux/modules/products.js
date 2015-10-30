@@ -41,7 +41,7 @@ const INITIAL_STATE = [{
  * @param {string} action - The action to perform.
  * @returns {object} Updated state
  */
-export default function(state = INITIAL_STATE, action) {
+export function products(state = INITIAL_STATE, action) {
   switch (action.type) {
   case ADD_PRODUCT:
     return state.concat({

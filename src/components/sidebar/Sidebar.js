@@ -8,7 +8,7 @@ import React, {Component} from 'react';
  * @class Sidebar
  * @extends Component
  */
-class Sidebar extends Component {
+export class Sidebar extends Component {
   /**
    * @constructor
    */
@@ -57,5 +57,3 @@ class Sidebar extends Component {
     this.refs.appSidebar.toggle();
   }
 }
-
-export default Sidebar;

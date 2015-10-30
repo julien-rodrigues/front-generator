@@ -6,7 +6,7 @@ import React, {Component} from 'react';
  * @class Icons
  * @extends Component
  */
-class Icon extends Component {
+export class Icon extends Component {
   /**
    * Renders the component.
    * @method render
@@ -20,5 +20,3 @@ class Icon extends Component {
     );
   }
 }
-
-export default Icon;
