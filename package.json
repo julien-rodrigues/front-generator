@@ -55,7 +55,8 @@
   },
   "dependencies": {
     "history": "^1.12.5",
-    "material-ui": "^0.12.4",
+    "material-design-icons": "^2.0.0",
+    "material-ui": "^0.13.0",
     "normalize.css": "^3.0.3",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",

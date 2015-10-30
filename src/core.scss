@@ -3,6 +3,9 @@
 // @include sprites($spritesheet-sprites);
 
 @import '../node_modules/normalize.css/normalize';
+@import 'styles/fonts';
 @import 'styles/variables';
 @import 'styles/mixins/mixins';
 @import 'styles/main';
+
+@import 'components/icon/icon';

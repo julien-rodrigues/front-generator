@@ -26,6 +26,10 @@ export default {
   paths: {
     assets: 'assets/',
     dist: 'dist/',
+    fonts: [
+      'node_modules/material-design-icons/iconfont/**',
+      '!node_modules/material-design-icons/iconfont/README.md'
+    ],
     images: 'assets/img/',
     source: 'src/',
     sprite: 'assets/img/sprite/',

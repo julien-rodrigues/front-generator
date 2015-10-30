@@ -1,6 +1,36 @@
 const ADD_PRODUCT = 'ADD_PRODUCT';
 const INITIAL_STATE = [{
-  name: 'Bananas'
+  id: 12,
+  name: 'Bananas',
+  selected: false
+}, {
+  id: 89,
+  name: 'Tomatoes',
+  selected: false
+}, {
+  id: 456,
+  name: 'Nutella',
+  selected: false
+}, {
+  id: 22,
+  name: 'Carrots',
+  selected: false
+}, {
+  id: 1,
+  name: 'Yogourt',
+  selected: false
+}, {
+  id: 543,
+  name: 'Cheese',
+  selected: false
+}, {
+  id: 98,
+  name: 'Bread',
+  selected: false
+}, {
+  id: 11,
+  name: 'Milk',
+  selected: false
 }];
 
 

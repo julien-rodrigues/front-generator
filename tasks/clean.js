@@ -5,7 +5,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
 
-let cleanStageDeps = ['scripts', 'styles'];
+let cleanStageDeps = ['fonts', 'scripts', 'styles'];
 let cleanStagePatterns = [
   `${config.paths.stage}/**/*.scss`,
   `${config.paths.stage}/**/*.js`,

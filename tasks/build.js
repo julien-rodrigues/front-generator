@@ -6,7 +6,7 @@ const $ = gulpLoadPlugins();
 
 let buildTasks = [
   'eslint', 'create-sprite', 'clean:pre-build', 'copy:stage',
-  'styles', 'scripts', 'clean:stage', 'copy:build', 'clean:build'
+  'fonts', 'styles', 'scripts', 'clean:stage', 'copy:build', 'clean:build'
 ];
 
 // If we launched the build task without arguments.

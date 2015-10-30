@@ -28,7 +28,7 @@ let deleteOriginalFile = function() {
 /**
  * Cache revision task.
  */
-gulp.task('cache-revision', ['compress-images', 'scripts', 'styles'], () => {
+gulp.task('cache-revision', ['compress-images', 'fonts', 'scripts', 'styles'], () => {
   return gulp.src([
     config.paths.stage + config.scripts.entryPoint,
     `${config.paths.stage}${config.styles.entryPoint.substr(0, config.styles.entryPoint.lastIndexOf('.'))}*.css`,
