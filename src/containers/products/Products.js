@@ -1,14 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import {Icon} from '../../components';
 import {
+  FloatingActionButton,
   Table,
-  TableHeader,
-  TableRow,
-  TableHeaderColumn,
   TableBody,
-  TableRowColumn,
-  FloatingActionButton
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn
 } from 'material-ui';
 
 
@@ -34,7 +35,7 @@ class Products extends Component {
   /**
    * Renders the page.
    * @method render
-   * @returns {jsx} The page
+   * @returns {ReactComponent} The page
    */
   render() {
     return (
@@ -55,14 +56,16 @@ class Products extends Component {
             )}
           </TableBody>
         </Table>
-        <FloatingActionButton secondary={true} style={{
-          bottom: '20px',
-          color: '#fff',
-          position: 'fixed',
-          right: '20px'
-        }}>
-          <Icon>add</Icon>
-        </FloatingActionButton>
+        <Link to="/add-product">
+          <FloatingActionButton secondary={true} style={{
+            bottom: '20px',
+            color: '#fff',
+            position: 'fixed',
+            right: '20px'
+          }}>
+            <Icon>add</Icon>
+          </FloatingActionButton>
+        </Link>
       </div>
     );
   }

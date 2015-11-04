@@ -1,12 +1,20 @@
-import {App, Home, PageBoilerplate, Products} from '../containers';
-import {IndexRoute, Route} from 'react-router';
-import React from 'react'; // eslint-disable-line no-unused-vars
+export default {
+  boilerplate: {
+    label: 'A sample page',
+    route: '/page-boilerplate'
+  },
+  dashboard: {
+    label: 'Dashboard',
+    route: '/'
+  },
 
-export default (
-  <Route component={App}>
-    <IndexRoute component={Home} />
-    <Route path="page-boilerplate" component={PageBoilerplate} />
-    <Route path="products" component={Products} />
-    <Route path="*" component={Home} />
-  </Route>
-);
+  // Products related routes
+  addProduct: {
+    label: 'Add a product',
+    route: '/add-product'
+  },
+  products: {
+    label: 'Products',
+    route: '/products'
+  }
+};

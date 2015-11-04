@@ -1,15 +1,16 @@
 import {MenuItem} from 'material-ui';
+import routesConfig from './routes';
 
 export default [{
   text: 'Menu',
   type: MenuItem.Types.SUBHEADER
 }, {
-  route: '/',
-  text: 'Dashboard'
+  route: routesConfig.dashboard.route,
+  text: routesConfig.dashboard.label
 }, {
-  route: '/products',
-  text: 'Product list'
+  route: routesConfig.products.route,
+  text: routesConfig.products.label
 }, {
-  route: '/page-boilerplate',
-  text: 'A sample page'
+  route: routesConfig.boilerplate.route,
+  text: routesConfig.boilerplate.label
 }];

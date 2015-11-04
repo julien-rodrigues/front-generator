@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import React from 'react';
 import {render} from 'react-dom';
 import {Router} from 'react-router';
-import routes from './configs/routes';
+import router from './configs/router';
 
 // Instanciates application store.
 let store = createStore();
@@ -21,7 +21,7 @@ injectTapEventPlugin();
 // Renders the application depending on the route.
 render(
   <Provider store={store}>
-    <Router history={history} routes={routes} />
+    <Router history={history} routes={router} />
   </Provider>,
   document.getElementById('app-root')
 );
