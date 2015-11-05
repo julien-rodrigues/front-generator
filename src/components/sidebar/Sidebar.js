@@ -27,7 +27,7 @@ export class Sidebar extends Component {
    * @returns {void} Nothing
    */
   onNavigate(ev, index, payload) {
-    this.props.history.pushState(null, payload.route);
+    this.props.onNavigateHandler(payload.route);
   }
 
 

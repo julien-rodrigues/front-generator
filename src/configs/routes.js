@@ -10,7 +10,7 @@ export default {
 
   // Products related routes
   addProduct: {
-    label: 'Add a product',
+    label: 'Add a new product',
     route: '/add-product'
   },
   products: {

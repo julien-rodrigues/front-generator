@@ -1,5 +1,7 @@
 import {AppBar} from 'material-ui';
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {pushState} from 'redux-router';
 import {Sidebar} from '../../components';
 
 
@@ -8,6 +10,9 @@ import {Sidebar} from '../../components';
  * @class Application
  * @extends Component
  */
+@connect(state => ({
+  router: state.router
+}))
 class Application extends Component {
   /**
    * Handles the open/close method of the sidebar.
@@ -25,6 +30,18 @@ class Application extends Component {
   constructor() {
     super();
     this.appSidebarToggle = this.appSidebarToggle.bind(this);
+    this.onNavigateHandler = this.onNavigateHandler.bind(this);
+  }
+
+
+  /**
+   * Main sidebar navigation handler.
+   * @method onNavigateHandler
+   * @param {string} route - The selected route
+   * @returns {void} Nothing
+   */
+  onNavigateHandler(route) {
+    this.props.dispatch(pushState(null, route));
   }
 
 
@@ -36,7 +53,7 @@ class Application extends Component {
   render() {
     return (
       <main>
-        <Sidebar ref="appSidebar" history={this.props.history} />
+        <Sidebar ref="appSidebar" onNavigateHandler={this.onNavigateHandler} />
         <AppBar
           onLeftIconButtonTouchTap={this.appSidebarToggle}
           title="Application Example"

@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 import {Icon} from '../../components';
+import routesConfig from '../../configs/routes';
+import {pushState} from 'redux-router';
 import {
   FloatingActionButton,
   Table,
@@ -33,6 +34,25 @@ class Products extends Component {
 
 
   /**
+   * @constructor
+   */
+  constructor() {
+    super();
+    this.floatingActionHandler = this.floatingActionHandler.bind(this);
+  }
+
+
+  /**
+   * Floating action handler.
+   * @method floatingActionHandler
+   * @returns {void} Nothing
+   */
+  floatingActionHandler() {
+    this.props.dispatch(pushState(null, routesConfig.addProduct.route));
+  }
+
+
+  /**
    * Renders the page.
    * @method render
    * @returns {ReactComponent} The page
@@ -56,16 +76,15 @@ class Products extends Component {
             )}
           </TableBody>
         </Table>
-        <Link to="/add-product">
-          <FloatingActionButton secondary={true} style={{
+        <FloatingActionButton onClick={this.floatingActionHandler}
+          secondary={true} style={{
             bottom: '20px',
             color: '#fff',
             position: 'fixed',
             right: '20px'
           }}>
-            <Icon>add</Icon>
-          </FloatingActionButton>
-        </Link>
+          <Icon>add</Icon>
+        </FloatingActionButton>
       </div>
     );
   }
